@@ -14,5 +14,11 @@ import javax.jws.WebMethod;
 public interface ServiceAInterface
 {
     @WebMethod
+    /**
+     * @method getServiceA(): This is the interface for Service A ensuring both the
+     *         client and the servers have the same methods
+     * 
+     * @return String
+     */
     public String getServiceA();
 }
