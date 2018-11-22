@@ -10,38 +10,55 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-public class Client {
-	public static void main(String[] args) throws Exception {
+public class Client
+{
+    /**
+     * @method Main(String[]): Method that the client runs, takes in the service
+     *         requested. Ensures that the input is sanitized. Hands the input to
+     *         the API Gateway to send the request to a server for processing.
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception
+    {
 
-		try {
-			// Turn Args into variables
-			String serviceName = args[0];
+	try
+	{
+	    // Turn Args into variables
+	    String serviceName = args[0];
 
-			if ((serviceName.equals("ServiceA") || serviceName.equals("ServiceB")) && args.length == 1) {
-				// Do the client stuff
-				URL url = new URL("http://localhost:9000/" + serviceName + "?wsdl");
-				QName name = new QName("http://localhost", serviceName);
-				Service service = Service.create(url, name);
-				if (serviceName.equals("ServiceA")) {
-					ServiceAInterface svcA = service.getPort(ServiceAInterface.class);
-					System.out.println(svcA.getServiceA());
-				} else if (serviceName.equals("ServiceB")) {
-					ServiceBInterface svcB = service.getPort(ServiceBInterface.class);
-					System.out.println(svcB.getServiceB());
-				}
-			} else {
-				System.out.println("Please enter a valid service");
-				System.out.println("Usage:\n java Client ServiceA\n java Client ServiceB");
-			}
-		} catch (Exception ex) {
-			String e = ex.getClass().toString();
-			if (e.toString().equals("class java.lang.ArrayIndexOutOfBoundsException")) {
-				System.out.println("Error!\nPlease provide an argument!");
-				System.out.println("Usage:\n java Client ServiceA\n java Client ServiceB");
-			} else {
-				System.out.print(ex);
-			}
-
+	    if ((serviceName.equals("ServiceA") || serviceName.equals("ServiceB")) && args.length == 1)
+	    {
+		// Do the client stuff
+		URL url = new URL("http://localhost:9000/" + serviceName + "?wsdl");
+		QName name = new QName("http://localhost", serviceName);
+		Service service = Service.create(url, name);
+		if (serviceName.equals("ServiceA"))
+		{
+		    ServiceAInterface svcA = service.getPort(ServiceAInterface.class);
+		    System.out.println(svcA.getServiceA());
+		} else if (serviceName.equals("ServiceB"))
+		{
+		    ServiceBInterface svcB = service.getPort(ServiceBInterface.class);
+		    System.out.println(svcB.getServiceB());
 		}
+	    } else
+	    {
+		System.out.println("Please enter a valid service");
+		System.out.println("Usage:\n java Client ServiceA\n java Client ServiceB");
+	    }
+	} catch (Exception ex)
+	{
+	    String e = ex.getClass().toString();
+	    if (e.toString().equals("class java.lang.ArrayIndexOutOfBoundsException"))
+	    {
+		System.out.println("Error!\nPlease provide an argument!");
+		System.out.println("Usage:\n java Client ServiceA\n java Client ServiceB");
+	    } else
+	    {
+		System.out.print(ex);
+	    }
+
 	}
+    }
 }
