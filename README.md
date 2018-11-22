@@ -20,7 +20,6 @@
 * Servers `1` and `2` give service `A`, while Servers `3` and `4` give service `B`. 
 * The servers are responsible for printing the request number, the information for which is pulled from the API Gateway.
 * The servers also print a time stamp for when the request has been competed.
-
 * Methods:
   * @Class Server<1-4>: Communicates with the APIGateway to return a service to the client
   * @method getService<A,B>: Returns a String message to the client and displays the request number and who made the request on the APIGateway program. @return String message to the client
@@ -37,6 +36,5 @@
 * This is the file which requests a service. It only talks to the API Gateway.
 * The user provides which service it wants with: `java Client [ServiceA, ServiceB]`
 * The server responds with a message to the client, which the client prints to the terminal.
-
 * Methods:
   * @method Main(String[]): Method that the client runs, takes in the service requested. Ensures that the input is sanitized. Hands the input to the API Gateway to send the request to a server for processing. @aram args. @throws Exception
