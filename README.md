@@ -20,6 +20,12 @@
 * Servers `1` and `2` give service `A`, while Servers `3` and `4` give service `B`. 
 * The servers are responsible for printing the request number, the information for which is pulled from the API Gateway.
 * The servers also print a time stamp for when the request has been competed.
+
+* Methods:
+  * @Class Server<1-4>: Communicates with the APIGateway to return a service to the client
+  * @method getService<A,B>: Returns a String message to the client and displays the request number and who made the request on the APIGateway program. @return String message to the client
+  * @method getReturnValue: Getter method used by the APIGateway to achieve load balancing. @return String message
+  * @method setNull: Sets the value of message to null once a request is complete. @return void
 	
 #### Service<A,B>Interface.java
 * This is the interface file, which ensures that the client is calling a method which the server actually has.
@@ -33,7 +39,4 @@
 * The server responds with a message to the client, which the client prints to the terminal.
 
 * Methods:
-  * @Class Server1: Communicates with the APIGateway to return a service to the client
-  * @method getServiceA: Returns a String message to the client and displays the request number and who made the request on the APIGateway program. @return String message to the client
-  * @method getReturnValue: Getter method used by the APIGateway to achieve load balancing. @return String message
-  * @method setNull: Sets the value of message to null once a request is complete. @return void
+  * @method Main(String[]): Method that the client runs, takes in the service requested. Ensures that the input is sanitized. Hands the input to the API Gateway to send the request to a server for processing. @aram args. @throws Exception
